@@ -20,6 +20,9 @@ public class Address {
     @Column
     private String city;
 
+    @OneToOne
+    @JoinColumn(name = "idaddress")
+    private PetStore petStore;
 
     public Address() {
     }

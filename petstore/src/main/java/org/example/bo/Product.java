@@ -4,44 +4,39 @@ import jakarta.persistence.*;
 import org.example.bo.enums.TypeProduit;
 import java.util.List;
 
-@Entity
+@Entity(name = "product")
 public class Product {
 
     @Id
-    private int id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column
     private String code;
-
     @Column
     private String label;
-
-    @Enumerated(EnumType.STRING)
+    @Column
     private TypeProduit prodType;
 
+    @Column
+    private Double price;
     @ManyToMany(mappedBy = "products")
     private List<PetStore> petStores;
-
-    @Column
-    private double price;
 
     public Product() {
     }
 
-    public Product(String code, String label, TypeProduit prodType, List<PetStore> petStores, double price) {
+    public Product(String code, String label, TypeProduit prodType, double price) {
         this.code = code;
         this.label = label;
         this.prodType = prodType;
-        this.petStores = petStores;
         this.price = price;
     }
 
-    public Product(int id, String code, String label, TypeProduit prodType, List<PetStore> petStores, double price) {
+    public Product(int id, String code, String label, TypeProduit prodType, double price) {
         this.id = id;
         this.code = code;
         this.label = label;
         this.prodType = prodType;
-        this.petStores = petStores;
         this.price = price;
     }
 

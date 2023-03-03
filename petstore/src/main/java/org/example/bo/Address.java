@@ -2,26 +2,19 @@ package org.example.bo;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "address")
 public class Address {
-
     @Id
-    private int id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column
     private String number;
-
     @Column
     private String street;
-
     @Column
     private String zipCode;
-
     @Column
     private String city;
-
-    @OneToOne(mappedBy = "address")
-    private PetStore petStore;
 
     public Address() {
     }

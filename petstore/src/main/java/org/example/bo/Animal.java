@@ -2,22 +2,22 @@ package org.example.bo;
 
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-public class Animal {
-
+@Entity(name = "animal")
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Animal {
     @Id
-    private int Id;
-
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
     @Column
     private Date birthDate;
-
     @Column
     private String color;
 
-    @ManyToOne
-    @JoinColumn(name = "idpetstore")
+    @ManyToOne(optional = false)
     private PetStore petStore;
 
     public Animal() {
@@ -29,19 +29,24 @@ public class Animal {
         this.petStore = petStore;
     }
 
+    public Animal(Date birthDate, String color) {
+        this.birthDate = birthDate;
+        this.color = color;
+    }
+
     public Animal(int id, Date birthDate, String color, PetStore petStore) {
-        Id = id;
+        this.id = id;
         this.birthDate = birthDate;
         this.color = color;
         this.petStore = petStore;
     }
 
     public int getId() {
-        return Id;
+        return this.id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public Date getBirthDate() {

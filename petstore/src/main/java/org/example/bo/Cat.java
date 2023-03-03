@@ -2,11 +2,11 @@ package org.example.bo;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
+@Entity(name="cat")
 public class Cat extends Animal{
-
     @Column
     private String idShip;
 
@@ -15,6 +15,11 @@ public class Cat extends Animal{
 
     public Cat(Date birthDate, String color, PetStore petStore, String idShip) {
         super(birthDate, color, petStore);
+        this.idShip = idShip;
+    }
+
+    public Cat(Date birthDate, String color, String idShip) {
+        super(birthDate, color);
         this.idShip = idShip;
     }
 

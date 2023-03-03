@@ -3,12 +3,13 @@ package org.example.bo;
 import jakarta.persistence.*;
 import org.example.bo.enums.FishLivEnv;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-public class Fish extends Animal{
 
-    @Enumerated(EnumType.STRING)
+@Entity(name="fish")
+public class Fish extends Animal{
+    @Column
     private FishLivEnv fishLivEnv;
 
     public Fish() {
@@ -16,6 +17,11 @@ public class Fish extends Animal{
 
     public Fish(Date birthDate, String color, PetStore petStore, FishLivEnv fishLivEnv) {
         super(birthDate, color, petStore);
+        this.fishLivEnv = fishLivEnv;
+    }
+
+    public Fish(Date birthDate, String color, FishLivEnv fishLivEnv) {
+        super(birthDate, color);
         this.fishLivEnv = fishLivEnv;
     }
 

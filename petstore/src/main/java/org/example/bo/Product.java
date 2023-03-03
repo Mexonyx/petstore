@@ -19,7 +19,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private TypeProduit prodType;
 
-    @ManyToMany(mappedBy = "petstore")
+    @ManyToMany(mappedBy = "products")
     private List<PetStore> petStores;
 
     @Column

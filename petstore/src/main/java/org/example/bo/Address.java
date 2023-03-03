@@ -20,8 +20,7 @@ public class Address {
     @Column
     private String city;
 
-    @OneToOne
-    @JoinColumn(name = "idaddress")
+    @OneToOne(mappedBy = "address")
     private PetStore petStore;
 
     public Address() {

@@ -13,7 +13,8 @@ public class PetStore {
     @Column
     private String name;
 
-    @OneToOne(mappedBy = "petstore")
+    @OneToOne
+    @JoinColumn(name = "idaddress")
     private Address address;
 
     @ManyToMany
